@@ -67,3 +67,54 @@ let chuka = new Student("Chuka", "Cohort 2", "Backend");
 
 israel.createStudent();
 chuka.createStudent();
+
+function createStudent(name, cohort, course, category) {
+  var age = 20;
+  let name = "Israel";
+}
+
+//loop
+for (let i = 0; i < 10; i++) {
+  console.log(i);
+}
+
+for (let i = 0; i < 10; i++) {
+  console.log(i);
+}
+for (let i = 0; i < 10; i++) {
+  console.log(i);
+}
+for (let i = 0; i < 10; i++) {
+  console.log(i);
+}
+
+student = 23;
+let stude = 30;
+
+// 10,000;
+
+class Person {
+  constructor(name) {
+    this;
+  }
+
+  greeting() {
+    console.log(`Hello, my name is ${this.name}`);
+  }
+}
+
+let person1 = new Person("Mairam");
+person1.greeting();
+
+fetch("https://jsonplaceholder.typicode.com/posts")
+  .then((response) => {})
+  .catch((error) => {})
+  .finally(() => {});
+
+async function fetchData() {
+  try {
+    // const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+  } catch (error) {
+    // Handle error
+  }
+}

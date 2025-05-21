@@ -1,0 +1,24 @@
+{
+  "name": "sapphire",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/debanjo31/sapphire.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/debanjo31/sapphire/issues"
+  },
+  "homepage": "https://github.com/debanjo31/sapphire#readme",
+  "description": "",
+  "dependencies": {
+    "puppeteer": "^24.9.0"
+  }
+}
