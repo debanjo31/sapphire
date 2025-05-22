@@ -2,9 +2,11 @@
   "name": "sapphire",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node nodejs/index.js",
+    "start": "node nodejs/filesystem.js"
   },
   "repository": {
     "type": "git",

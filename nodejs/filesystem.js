@@ -3,7 +3,8 @@
 //read, write, delete, rename, and append files
 // fs - file system
 
-const fs = require("fs");
+// const fs = require("fs");
+import fs from "fs";
 // import fs from "fs"
 
 fs.readFile("./nodejs/data.txt", (err, data) => {
