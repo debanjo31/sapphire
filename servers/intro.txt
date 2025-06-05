@@ -1,0 +1,64 @@
+A server in coding refers to a computer program or physical machine 
+that provides services, resources, or data to other programs or devices
+ (called "clients") over a network. Here's a breakdown of the key concepts:
+
+What Servers Do
+
+Servers "serve" requests from clients by processing them and sending back responses.
+ This follows the client-server model - clients make requests, servers fulfill them.
+
+Types of Servers
+Web Servers
+
+Serve web pages and handle HTTP requests
+Examples: Apache, Nginx, Node.js servers
+When you visit a website, your browser (client) requests pages from a web server
+
+Database Servers
+
+Store and manage data
+Examples: MySQL, PostgreSQL, MongoDB servers
+Applications query these servers to retrieve or store information
+
+File Servers
+
+Share files across a network
+Allow multiple users to access shared documents and resources
+
+Application Servers
+
+Run business logic and applications
+Handle complex processing between web servers and databases
+Examples: Java application servers, Python Flask/Django servers
+
+API Servers
+
+Provide programming interfaces for other applications
+Allow different software systems to communicate
+Often serve JSON or XML data instead of web pages
+
+Physical vs Software Servers
+
+Physical Server
+
+An actual computer/machine dedicated to running server software
+Often more powerful than regular computers (more RAM, storage, processing power)
+
+Software Server
+
+The program/application that handles requests
+Can run on your personal computer for development
+Multiple server programs can run on one physical machine
+
+Simple Example
+When you visit a website like Google:
+
+Your browser (client) sends a request to Google's web server
+The server processes your request
+The server sends back the HTML, CSS, and JavaScript for the Google homepage
+Your browser displays the page
+
+Servers are essential for almost all networked applications,
+ from websites to mobile apps to online games. 
+ They centralize resources and enable multiple users to access 
+ shared services simultaneously.
