@@ -11,7 +11,7 @@ app.use(express.json());
 // Define the port number
 const PORT = 3000;
 
-const users = [
+export const users = [
   {
     id: 1,
     name: "John Doe",
@@ -70,7 +70,6 @@ app.get("/", (req, res) => {
 });
 
 app.get("/users", (req, res) => {
-  console.log(req, "res gotten");
   res.json({
     length: users.length,
     users: users,
@@ -132,7 +131,6 @@ app.delete("/users/:userId", (req, res) => {
     res.status(404).json({ message: "User not found" });
   }
 });
-
 
 // Update user by Id (PUT method)
 // Search User (query parameter)
