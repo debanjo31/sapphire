@@ -1,6 +1,8 @@
 import express from "express";
 import mongoose from "mongoose";
 import studentRouter from "./routes/Student.js";
+import adminRouter from "./routes/admin.js";
+import courseRouter from "./routes/Course.js";
 import cors from "cors";
 
 const PORT = 8080;
@@ -24,6 +26,8 @@ app.get("/", (req, res) => {
   res.send("Hello, World!");
 });
 app.use(studentRouter);
+app.use(adminRouter);
+app.use(courseRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

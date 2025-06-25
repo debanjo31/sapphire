@@ -17,3 +17,13 @@ and performs operations like saving or fetching data
 //utils - uitlity function that are reusuable
 
 // validation - validate our user input, req.body, req.query
+
+3 Types of User - Student, Instructors, Admin
+
+Student Schema
+Instructor Schema
+Admin Schema
+
+Course1 Schema - Admin
+Course2 Schema - Admin
+Course3 Schema - Admin

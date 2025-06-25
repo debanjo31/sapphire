@@ -14,6 +14,12 @@ const studentSchema = new Schema({
     type: String,
     enum: ["male", "female"],
   },
+  address: {
+    street: { type: String },
+    city: { type: String },
+    state: { type: String },
+    zipCode: { type: String },
+  },
   virtual: { type: Boolean, default: false },
   bestFood: [String],
   created: { type: Date, default: Date.now },

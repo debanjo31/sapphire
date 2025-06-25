@@ -1,19 +1,28 @@
 import Student from "../models/Student.js";
+import { comparePassword, hashPassword } from "../utils/hash.js";
+import { generateToken } from "../utils/token.js";
+import { validateStudent } from "../validation/student.js";
 
 export const createSudent = async (req, res) => {
   try {
     const { firstName, lastName, password, email, age } = req.body;
-    if (!firstName || !lastName || !password || !email || !age) {
-      return res.status(400).json({ message: "All fields are required" });
+    const verifyStudent = validateStudent(req.body);
+    if (!verifyStudent.valid) {
+      return res.status(400).json({
+        message: "Validation error",
+        errors: verifyStudent.errors,
+      });
     }
+    console.log(verifyStudent.value, "VALIDATED STUDENT DATA");
     const checkEmail = await Student.findOne({ email });
     if (checkEmail) {
       return res.status(400).json({ message: "Email already exists" });
     }
+    const hashedPassword = hashPassword(password);
     const newStudent = new Student({
       firstName,
       lastName,
-      password,
+      password: hashedPassword,
       email,
       age,
     });
@@ -47,10 +56,12 @@ export const loginStudent = async (req, res) => {
     if (!student) {
       return res.status(401).json({ message: "Invalid email or password" });
     }
-    if (student.password !== password) {
+    const isPasswordValid = comparePassword(password, student.password);
+    if (!isPasswordValid) {
       return res.status(401).json({ message: "Invalid email or password" });
     }
-    res.status(200).json({ message: "Login successful", student });
+    const token = generateToken(student._id, "student");
+    res.status(200).json({ message: "Login successful", student, token });
   } catch (error) {
     console.error(error, "ERROR LOGGING IN STUDENT");
     res.status(500).json({ message: "Error logging in student" });
