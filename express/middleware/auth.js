@@ -1,3 +1,4 @@
+// Middleware to check if the user is authorized
 export function checkAuthorization(req, res, next) {
   console.log("Checking authorization...", req.headers);
   if (req.headers.authorization) {
