@@ -1,6 +1,6 @@
 import { verifyToken } from "../utils/token.js";
 
-export const verifyAdmin = (req, res, next) => {
+export const verifyInstructor = (req, res, next) => {
   console.log("Authorization header:", req.headers.authorization);
   // Bearer ssksksk
   const token = req.headers.authorization?.split(" ")[1]; // Extract token from Authorization header
@@ -14,8 +14,8 @@ export const verifyAdmin = (req, res, next) => {
     return res.status(401).json({ message: "Unauthorized, Invalid token" });
   }
   console.log("Decoded token:", decoded);
-  if (decoded.userType !== "admin") {
-    return res.status(403).json({ message: "Forbidden, Admins only" });
+  if (decoded.userType !== "instructor") {
+    return res.status(403).json({ message: "Forbidden, Instructors only" });
   }
   req.userId = decoded.userId; // Attach userId to request object
   req.userType = decoded.userType; // Attach userType to request object

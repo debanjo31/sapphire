@@ -7,6 +7,7 @@ import {
   deleteCourse,
   getCoursesByInstructor,
   getCoursesByLevel,
+  assignInstructorToCourse,
 } from "../controller/Course.js";
 import { verifyAdmin } from "../middleware/verifyAdmin.js";
 
@@ -22,5 +23,6 @@ router.get("/api/course/instructor/:instructorId", getCoursesByInstructor);
 router.post("/api/course", verifyAdmin, createCourse);
 router.put("/api/course/:id", verifyAdmin, updateCourse);
 router.delete("/api/course/:id", verifyAdmin, deleteCourse);
+router.put("/api/course/assign/:courseId/:instructorId", verifyAdmin, assignInstructorToCourse);
 
 export default router;

@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import studentRouter from "./routes/Student.js";
 import adminRouter from "./routes/admin.js";
 import courseRouter from "./routes/Course.js";
+import instructorRouter from "./routes/Instructor.js";
 import cors from "cors";
 
 const PORT = 8080;
@@ -28,6 +29,7 @@ app.get("/", (req, res) => {
 app.use(studentRouter);
 app.use(adminRouter);
 app.use(courseRouter);
+app.use(instructorRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

@@ -38,9 +38,6 @@ export const createInstructor = async (req, res) => {
     // Save instructor
     await instructor.save();
 
-    // Generate token for authentication
-    const token = generateToken(instructor._id);
-
     // Remove password from response
     const instructorResponse = instructor.toObject();
     delete instructorResponse.password;
@@ -48,7 +45,6 @@ export const createInstructor = async (req, res) => {
     res.status(201).json({
       message: "Instructor created successfully",
       instructor: instructorResponse,
-      token,
     });
   } catch (error) {
     console.error("Create instructor error:", error);
@@ -217,7 +213,7 @@ export const loginInstructor = async (req, res) => {
     }
 
     // Generate token
-    const token = generateToken(instructor._id);
+    const token = generateToken(instructor._id, "instructor");
 
     // Remove password from response
     const instructorResponse = instructor.toObject();

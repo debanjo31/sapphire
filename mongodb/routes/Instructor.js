@@ -9,20 +9,21 @@ import {
   addCourse,
   removeCourse,
 } from "../controller/Instructor.js";
-import { authenticateToken } from "../middleware/auth.js";
+import { verifyInstructor } from "../middleware/verifyInstructor.js";
+import { verifyAdmin } from "../middleware/verifyAdmin.js";
 
 const router = express.Router();
 
 // Public routes
-router.post("/login", loginInstructor);
-router.get("/", getAllInstructors);
-router.get("/:id", getInstructorById);
+router.post("/api/instructor/login", loginInstructor);
+router.get("/api/instructor", getAllInstructors);
+router.get("/api/instructor/:id", getInstructorById);
 
 // Protected routes
-router.post("/", authenticateToken, createInstructor);
-router.put("/:id", authenticateToken, updateInstructor);
-router.delete("/:id", authenticateToken, deleteInstructor);
-router.post("/:id/courses", authenticateToken, addCourse);
-router.delete("/:id/courses", authenticateToken, removeCourse);
+router.post("/api/instructor/signup", verifyAdmin, createInstructor);
+router.put("/api/instructor/:id", verifyInstructor, updateInstructor);
+router.delete("/api/instructor/:id", verifyInstructor, deleteInstructor);
+router.post("/api/instructor/:id/courses", verifyInstructor, addCourse);
+router.delete("/api/instructor/:id/courses", verifyInstructor, removeCourse);
 
 export default router;
