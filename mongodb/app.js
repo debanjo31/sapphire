@@ -7,7 +7,7 @@ import instructorRouter from "./routes/Instructor.js";
 import cors from "cors";
 
 const PORT = 8080;
-const MONGO_URL = "mongodb://localhost:27017/dataforte";
+const MONGO_URL = "mongodb+srv://adebanjoisrael31:pass1234;@chat-app.n8mrv2v.mongodb.net/";
 
 const app = express();
 app.use(express.json());

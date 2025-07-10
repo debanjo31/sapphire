@@ -1,0 +1,78 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  MANAGER
+  CASHIER
+}
+
+model User {
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+  name  String
+  password String
+  role  Role    @default(CASHIER)
+  manager Manager?
+  cashier Cashier?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Manager{
+  id    Int     @id @default(autoincrement())
+  userId Int    @unique
+  user User    @relation(fields: [userId], references: [id])
+  address String?
+  phone   String?
+  nin     String?
+  store Store?  
+}
+
+model Cashier {
+  id    Int     @id @default(autoincrement())
+  userId Int    @unique
+  user User    @relation(fields: [userId], references: [id])
+  address String?
+  phone   String?
+  nin     String?
+  storeid Int?
+  store Store? @relation(fields: [storeid], references: [id])
+}
+
+model Store {
+  id      Int     @id @default(autoincrement())
+  name    String  @unique
+  address String
+  managerId Int? @unique
+  manager Manager? @relation(fields: [managerId], references: [id])
+  cashiers Cashier[]
+  products Product[]
+}
+
+model Product {
+  id          Int     @id @default(autoincrement())
+  name        String
+  description String?
+  price       Float
+  stock       Int     @default(0)
+  storeId     Int
+  store       Store   @relation(fields: [storeId], references: [id])
+}
+
+//npx prisma migrate dev --name name_of_migration
+//npx prisma generate
+
